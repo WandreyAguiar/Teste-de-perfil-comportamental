@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Perfil Comportamental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3a6332;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .question p {
+            font-size: 18px;
+            margin: 0;
+            padding: 10px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .option-item label {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        input[type="radio"] {
+            margin: 0;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            display: block;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #3a6332;
+        }
+
+        button:hover {
+            background-color: #3a6332;
+        }
+        .link-perfil {
+
+         color: #3a6332;
+         font-size: medium;
+         font-weight: bold;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .result p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #3a6332;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        function calcularResultado() {
+            var perfilS1 = 0;
+            var perfilS2 = 0;
+            var perfilS3 = 0;
+            var perfilS4 = 0;
+
+            for (var i = 1; i <= 25; i++) {
+                var respostaSelecionada = document.querySelector('input[name=q' + i + ']:checked');
+
+                if (respostaSelecionada !== null) {
+                    var valorResposta = respostaSelecionada.value;
+
+                    switch (valorResposta) {
+                        case 's1':
+                            perfilS1++;
+                            break;
+                        case 's2':
+                            perfilS2++;
+                            break;
+                        case 's3':
+                            perfilS3++;
+                            break;
+                        case 's4':
+                            perfilS4++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            var totalPerguntas = 25;
+            var percentualS1 = (perfilS1 / totalPerguntas) * 100;
+            var percentualS2 = (perfilS2 / totalPerguntas) * 100;
+            var percentualS3 = (perfilS3 / totalPerguntas) * 100;
+            var percentualS4 = (perfilS4 / totalPerguntas) * 100;
+
+            document.getElementById('resultado').innerHTML = `
+               <p style="color: #00FF00;">Tubarão - Foco em resultados - ${percentualS1.toFixed(2)}%</p>
+               <p style="color: #0000FF;">Águia - Criatividade e Liberdade - ${percentualS2.toFixed(2)}%</p>
+               <p style="color: #FF0000;">Gato - Felicidade e Igualdade - ${percentualS3.toFixed(2)}%</p>
+               <p style="color: #DDDD07;">Lobo - Ordem e controle - ${percentualS4.toFixed(2)}%</p>
+            `;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Teste de Perfil Comportamental</h1>
+    <p id="t1">Este teste foi desenvolvido para identificar o perfil comportamental de profissionais. O teste é composto
+        por 25 questões de múltipla escolha.</p>
+    <p id="t2">Ao final do teste, o resultado será apresentado com a classificação do perfil comportamental do
+        profissional.</p>
+
+    <div class="container">
+        <div class="question">
+            <p>1. Eu sou...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q1" value="s1" id="q1a">
+                    <label for="q1a">A. Idealista, criativo e visionário</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" value="s2" id="q1b">
+                    <label for="q1b">B. Divertido, espiritual e benéfico</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" value="s3" id="q1c">
+                    <label for="q1c">C. Confiável, meticuloso e previsível</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" value="s4" id="q1d">
+                    <label for="q1d">D. Focado, determinado e persistente</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. Eu gosto de...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q2" value="s1" id="q2a">
+                    <label for="q2a">A. Ser piloto</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" value="s2" id="q2b">
+                    <label for="q2b">B. Conversar com os passageiros</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" value="s3" id="q2c">
+                    <label for="q2c">C. Planejar a viagem</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" value="s4" id="q2d">
+                    <label for="q2d">D. Explorar novas rotas</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. Se você quiser se dar bem comigo... </p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q3" value="s1" id="q3a">
+                    <label for="q2a">A. me de liberdade</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" value="s2" id="q3b">
+                    <label for="q2b">B. Me deixe saber sua expectativa</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" value="s3" id="q3c">
+                    <label for="q2c">C. Lidere, siga ou saia do caminho</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" value="s4" id="q3d">
+                    <label for="q2d">D. Seja amigável, carinhoso e compreensivo</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. Para conseguir obter bons resultados é preciso...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q4" value="s1" id="q4a">
+                    <label for="q4a">A. Ter incertezas</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q4" value="s2" id="q4b">
+                    <label for="q4b">B. Controlar o essencial</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q4" value="s3" id="q4c">
+                    <label for="q4c">C. Diversão e cerebração</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q4" value="s4" id="q4d">
+                    <label for="q4d">D. Planejar e obter recursos</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. Eu me divirto quando...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q5" value="s1" id="q5a">
+                    <label for="q5a">A. Estou me exercitando</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q5" value="s2" id="q5b">
+                    <label for="q5b">B. Tenho novidades</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q5" value="s3" id="q5c">
+                    <label for="q5c">C. Estou com amigos</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q5" value="s4" id="q5d">
+                    <label for="q5d">D. estou no controle</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. Eu penso que...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q6" value="s1" id="q6a">
+                    <label for="q6a">A. Unidos venceremos, divididos perderemos</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q6" value="s2" id="q6b">
+                    <label for="q6b">B. O ataque é melhor que a defesa</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q6" value="s3" id="q6c">
+                    <label for="q6c">C. É bom ser manso, mas andar com um porrete</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q6" value="s4" id="q6d">
+                    <label for="q6d">D. Um homem prevenido vale por dois</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. Minha preocupação é...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q7" value="s1" id="q7a">
+                    <label for="q7a">A. Gerar a ideia global </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q7" value="s2" id="q7b">
+                    <label for="q7b">B. Fazer com que as pessoas gostem </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q7" value="s3" id="q7c">
+                    <label for="q7c">C. Fazer com que funcione</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q7" value="s4" id="q7d">
+                    <label for="q7d">D. Fazer com que aconteça</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. Eu prefiro...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q8" value="s1" id="q8a">
+                    <label for="q8a">A. Perguntas a respostas</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" value="s2" id="q8b">
+                    <label for="q8b">B. Ter todos os detalhes</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" value="s3" id="q8c">
+                    <label for="q8c">C. Vantagens a meu favor </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" value="s4" id="q8d">
+                    <label for="q8d">D. Que todos tenham a chance de ser ouvido </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. Eu gosto de...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q9" value="s1" id="q9a">
+                    <label for="q9a">A. Fazer progresso </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q9" value="s2" id="q9b">
+                    <label for="q9b">B. Construir memórias</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q9" value="s3" id="q9c">
+                    <label for="q9c">C. Fazer sentido </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q9" value="s4" id="q9d">
+                    <label for="q9d">D. Tornar as pessoas confortáveis</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. Eu gosto de chegar...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q10" value="s1" id="q10a">
+                    <label for="q10a">A. Na frente </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q10" value="s2" id="q10b">
+                    <label for="q10b">B. Junto</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q10" value="s3" id="q10c">
+                    <label for="q10c">C. Na hora</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q10" value="s4" id="q10d">
+                    <label for="q10d">D. Em outro lugar</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>11. Um ótimo dia para mim quando ...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q11" value="s1" id="q11a">
+                    <label for="q11a">>A. Consigo fazer muitas coisas </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q11" value="s2" id="q11b">
+                    <label for="q11a">B. Me divirto com meus amigos</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q11" value="s3" id="q11c">
+                    <label for="q11c">C. Tudo segue conforme planejado</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q11" value="s4" id="q11d">
+                    <label for="q11d">D. Desfruto de coisas novas e estimulantes </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>12. Eu vejo a morte como...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q12" value="s1" id="q12a">
+                    <label for="q12a">A. Uma grande aventura misteriosa</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q12" value="s2" id="q12b">
+                    <label for="q12b">B. Oportunidade para rever os falecidos</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q12" value="s3" id="q12c">
+                    <label for="q12c">C. Um modo de receber recompensas</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q12" value="s4" id="q12d">
+                    <label for="q12d">D. Algo que sempre chega muito cedo </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>13. Minha filosofia de vida é...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q13" value="s1" id="q13a">
+                    <label for="q13a">A. Há ganhadores e perdedores, e eu acredito ser um ganhador</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q13" value="s2" id="q13b">
+                    <label for="q13b">B. Para eu ganhar, ninguém precisa perder</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q13" value="s3" id="q13c">
+                    <label for="q13c">C. Para ganhar é preciso seguir as regras</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q13" value="s4" id="q13d">
+                    <label for="q13d">D. Para ganhar, é necessário inventar novas regras </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>14. Eu sempre gostei de...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q14" value="s1" id="q14a">
+                    <label for="q2a">A. Explorar</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q14" value="s2" id="q14b">
+                    <label for="q14b">B. Evitar surpresas</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q14" value="s3" id="q14c">
+                    <label for="q14c">C. Focalizar a meta</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q14" value="s4" id="q14d">
+                    <label for="q14d">D. Realizar uma abordagem natural</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>15. Eu gosto de mudanças se...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q15" value="s1" id="q15a">
+                    <label for="q15a">A. Me der uma vantagem competitiva</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q15" value="s2" id="q15b">
+                    <label for="q15b">B. For divertido e puder ser compartilhado </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q15" value="s3" id="q15c">
+                    <label for="q15c">C. Me der mais liberdade e variedade</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q15" value="s4" id="q15d">
+                    <label for="q15d">D. Melhorar ou me der mais controle</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>16. Não existe nada de errado em...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q16" value="s1" id="q16a">
+                    <label for="q16a">A. Se colocar na frente</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q16" value="s2" id="q16b">
+                    <label for="q16b">B. Colocar os outros na frente</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q16" value="s3" id="q16c">
+                    <label for="q16c">C. Mudar de ideia</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q16" value="s4" id="q16d">
+                    <label for="q16d">D. Ser consistente</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>17. Eu gosto de buscar conselhos de...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q17" value="s1" id="q17a">
+                    <label for="q17a">A. Pessoas bem-sucedidas</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q17" value="s2" id="q17b">
+                    <label for="q17b">B. Anciões e conselheiros</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q17" value="s3" id="q17c">
+                    <label for="q17c">C. Autoridades no assunto</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q17" value="s4" id="q17d">
+                    <label for="q17d">D. Lugares, os mais estranhos</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>18. Meu lema é...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q18" value="s1" id="q18a">
+                    <label for="q18a">A. Fazer o que precisa ser feito </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q18" value="s2" id="q18b">
+                    <label for="q18b">B. Fazer bem feito</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q18" value="s3" id="q18c">
+                    <label for="q18c">C. Fazer junto com o grupo</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q18" value="s4" id="q18d">
+                    <label for="q18d">D. Simplesmente fazer</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>19. Eu gosto de...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q19" value="s1" id="q19a">
+                    <label for="q19a">A. Complexidade, mesmo se confuso </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q19" value="s2" id="q19b">
+                    <label for="q19b">B. Ordem e sistematização</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q19" value="s3" id="q19c">
+                    <label for="q19c">C. Calor humano e animação</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q19" value="s4" id="q19d">
+                    <label for="q19d">D. Coisas claras e simples </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>20. Tempo para mim é...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q20" value="s1" id="q20a">
+                    <label for="q20a">A. Algo que detesto desperdiçar</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q20" value="s2" id="q20b">
+                    <label for="q20b">B. Um grande ciclo</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q20" value="s3" id="q20c">
+                    <label for="q20c">C. Uma flecha que leva ao inevitável</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q20" value="s4" id="q20d">
+                    <label for="q20d">>D. Irrelevante </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>21. Se eu fosse bilionário...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q21" value="s1" id="q21a">
+                    <label for="q21a">A. Faria doações para muitas entidades</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q21" value="s2" id="q21b">
+                    <label for="q21b">B. Criaria uma poupança avantajada </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q21" value="s3" id="q21c">
+                    <label for="q21c">C. Faria o que desse na cabeça</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q21" value="s4" id="q21d">
+                    <label for="q21d">D. Exibiria bastante com algumas pessoas </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>22. Eu acredito que...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q22" value="s1" id="q22a">
+                    <label for="q22a">A. O destino é mais importante que a jornada</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q22" value="s2" id="q22b">
+                    <label for="q22b">B. A jornada é mais importante que o destino</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q22" value="s3" id="q22c">
+                    <label for="q22c">C. Um centavo economizado é um centavo ganho</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q22" value="s4" id="q22d">
+                    <label for="q22d">D. Bastam um navio e uma estrela para navegar</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>23. Eu acredito também que...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q22" value="s1" id="q23a">
+                    <label for="q23a">A. Aquele que hesita está perdido </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q23" value="s2" id="q23b">
+                    <label for="q23b">B. De grão em grão a galinha enche o papo</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q23" value="s3" id="q23c">
+                    <label for="q23c">C. O que vai, volta</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q23" value="s4" id="q23d">
+                    <label for="q23d">D. Um sorriso ou uma careta é o mesmo para quem é cego </label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>24. Eu acredito ainda que...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q24" value="s1" id="q24a">
+                    <label for="q24a">A. É melhor prudência do que arrependimento </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q24" value="s2" id="q24b">
+                    <label for="q24b">B. A autoridade deve ser desafiada</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q24" value="s3" id="q24c">
+                    <label for="q24c">C. Ganhar é fundamental</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q24" value="s4" id="q24d">
+                    <label for="q24d">D. O coletivo é mais importante do que o individual</label>
+                </div>
+            </div>
+        </div>
+        <div class="question">
+            <p>25. Eu penso que...</p>
+            <div class="options">
+                <div class="option-item">
+                    <input type="radio" name="q25" value="s1" id="q25a">
+                    <label for="q25a">A. Não é fácil ficar encurralado</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q25" value="s2" id="q25b">
+                    <label for="q25b">B. É preferível olhar, antes de pular</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q25" value="s3" id="q25c">
+                    <label for="q25c">C. Duas cabeças pensam melhor que do que uma</label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q25" value="s4" id="q25d">
+                    <label for="q25d">D. Se você não tem condições de competir, não compita</label>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="calcularResultado()">Ver Resultado</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <div class="footer">
+        <p></p>
+        <a class="link-perfil" href="pagina1.html">Entenda seu perfil...</a>
+        <br>
+        <br>
+        <br>
+    </div>
+
+</body>
+
+</html>
